@@ -1,0 +1,15 @@
+# User-specific stuff:
+.idea/*
+
+# Gradle:
+.gradle/*
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# CMake
+cmake-build-debug/
+
+# IntelliJ
+out/
+build/
+*.iml
