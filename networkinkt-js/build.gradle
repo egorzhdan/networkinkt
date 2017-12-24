@@ -10,6 +10,12 @@ buildscript {
 }
 apply plugin: 'kotlin-platform-js'
 
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
 repositories {
     mavenCentral()
 }

@@ -1,5 +1,6 @@
 buildscript {
     ext.kotlin_version = '1.2.10'
+    ext.kotlinx_coroutines_version = '0.20'
 
     repositories {
         mavenCentral()
@@ -9,8 +10,13 @@ buildscript {
     }
 }
 
-
 apply plugin: 'kotlin-platform-common'
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
 
 repositories {
     mavenCentral()
