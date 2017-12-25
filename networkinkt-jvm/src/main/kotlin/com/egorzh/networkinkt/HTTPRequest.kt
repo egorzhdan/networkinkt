@@ -9,10 +9,15 @@ import kotlin.coroutines.experimental.suspendCoroutine
  * @author Egor Zhdan
  */
 actual class HTTPRequest actual constructor(val url: String, val method: String = "GET") {
-    suspend fun stream(): InputStream = suspendCoroutine { continuation ->
-        val con = URL(url).openConnection() as HttpURLConnection
-        con.requestMethod = method
+    private val con = URL(url).openConnection() as HttpURLConnection
 
+    init {
+        con.requestMethod = method
+    }
+
+    fun configure(block: HttpURLConnection.() -> Unit) = con.run(block)
+
+    suspend fun stream(): InputStream = suspendCoroutine { continuation ->
         val code = con.responseCode
 
         if (code in 200..299) {

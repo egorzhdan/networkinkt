@@ -7,8 +7,11 @@ import kotlin.coroutines.experimental.suspendCoroutine
  * @author Egor Zhdan
  */
 actual class HTTPRequest actual constructor(val url: String, val method: String = "GET") {
+    private val req = XMLHttpRequest()
+
+    fun configure(block: XMLHttpRequest.() -> Unit) = req.run(block)
+
     actual suspend fun loadText(): String = suspendCoroutine { continuation ->
-        val req = XMLHttpRequest()
         req.open(method, url)
         req.onreadystatechange = {
             if (req.readyState == 4.toShort()) {
