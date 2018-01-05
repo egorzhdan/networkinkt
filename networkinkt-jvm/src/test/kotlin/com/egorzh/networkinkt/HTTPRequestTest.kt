@@ -58,4 +58,15 @@ class HTTPRequestTest {
             assert(text.contains("sample12345"))
         }
     }
+
+    @Test
+    fun `load headers`() {
+        val req = HTTPRequest("http://httpbin.org/headers", method = "GET", headers = mapOf("MyLibraryHeader" to "networkinkt"))
+        runBlocking {
+            val text = req.loadText()
+            println(text)
+            assert(text.contains("MyLibraryHeader", ignoreCase = true))
+            assert(text.contains("networkinkt", ignoreCase = true))
+        }
+    }
 }

@@ -6,13 +6,16 @@ import kotlin.coroutines.experimental.suspendCoroutine
 /**
  * @author Egor Zhdan
  */
-actual class HTTPRequest actual constructor(val url: String, val method: String = "GET") {
+actual class HTTPRequest actual constructor(val url: String, val method: String = "GET", val headers: Map<String, String> = emptyMap()) {
     private val req = XMLHttpRequest()
 
     fun configure(block: XMLHttpRequest.() -> Unit) = req.run(block)
 
     actual suspend fun loadText(): String = suspendCoroutine { continuation ->
-        req.open(method, url)
+        req.open(method, url, async = true)
+        headers.forEach {
+            req.setRequestHeader(it.key, it.value)
+        }
         req.onreadystatechange = {
             if (req.readyState == 4.toShort()) {
                 if (req.status == 200.toShort()) {
