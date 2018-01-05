@@ -1,4 +1,4 @@
-# networkinkt
+# networkinkt [![Build Status](https://travis-ci.org/egorzhdan/networkinkt.svg?branch=master)](https://travis-ci.org/egorzhdan/networkinkt)
 
 This is a simple HTTP client for Kotlin. It relies on coroutines on both JS & JVM platforms.
 
@@ -6,6 +6,11 @@ This is a simple HTTP client for Kotlin. It relies on coroutines on both JS & JV
 import com.egorzh.networkinkt.*
 
 val text = HTTP.get("http://httpbin.org/status/200").loadText() // suspending call
+```
+
+A request with HTTP headers:
+```kotlin
+val resp = HTTP.get("http://httpbin.org/headers", headers = mapOf("MyLibraryHeader" to "networkinkt"))
 ```
 
 ## Getting started
