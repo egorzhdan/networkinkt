@@ -18,6 +18,11 @@ kotlin {
     }
 }
 
+sourceSets {
+    main.kotlin.srcDirs += 'networkinkt-common/src/main/kotlin'
+    test.kotlin.srcDirs += 'networkinkt-common/src/test/kotlin'
+}
+
 repositories {
     mavenCentral()
 }
