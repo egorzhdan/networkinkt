@@ -1,3 +1,4 @@
 rootProject.name = 'networkinkt'
 
 include 'networkinkt-jvm', 'networkinkt-js'
+include 'networkinkt-serialization', 'networkinkt-serialization-jvm'
