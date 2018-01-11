@@ -6,4 +6,4 @@ import kotlinx.serialization.json.JSON
 /**
  * @author Egor Zhdan
  */
-suspend fun <T: Any> HTTPRequest.getJSON() = JSON.parse<T>(getText())
+suspend inline fun <reified T: Any> HTTPRequest.getJSON() = JSON.parse<T>(getText())
