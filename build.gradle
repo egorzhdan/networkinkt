@@ -1,6 +1,9 @@
 buildscript {
-    ext.kotlin_version = '1.2.10'
-    ext.kotlinx_coroutines_version = '0.21'
+    ext {
+        kotlin_version = '1.2.10'
+        kotlinx_coroutines_version = '0.21'
+        kotlinx_serialization_version = '0.4'
+    }
 
     repositories {
         mavenCentral()
@@ -9,7 +12,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
-
 apply plugin: 'kotlin-platform-common'
 
 kotlin {
@@ -23,13 +25,18 @@ sourceSets {
     test.kotlin.srcDirs += 'networkinkt-common/src/test/kotlin'
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+    }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$kotlinx_coroutines_version"
+
     testCompile "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
 }
