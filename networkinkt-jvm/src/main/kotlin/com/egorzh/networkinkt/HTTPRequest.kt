@@ -8,13 +8,18 @@ import kotlin.coroutines.experimental.suspendCoroutine
 /**
  * @author Egor Zhdan
  */
-actual class HTTPRequest actual constructor(val url: String, val method: String = "GET", val headers: Map<String, String> = emptyMap()) {
+actual class HTTPRequest actual constructor(url: String, method: String = "GET", body: String? = null, headers: Map<String, String> = emptyMap()) {
     private val con = URL(url).openConnection() as HttpURLConnection
 
     init {
         con.requestMethod = method
         headers.forEach {
             con.setRequestProperty(it.key, it.value)
+        }
+
+        if (body != null) {
+            con.doOutput = true
+            con.outputStream.bufferedWriter().use { it.write(body) }
         }
     }
 
@@ -30,5 +35,9 @@ actual class HTTPRequest actual constructor(val url: String, val method: String 
         }
     }
 
-    actual suspend fun loadText() = stream().bufferedReader().readText()
+    actual suspend fun getText() = stream().bufferedReader().readText()
+
+    actual suspend fun send() {
+        stream()
+    }
 }

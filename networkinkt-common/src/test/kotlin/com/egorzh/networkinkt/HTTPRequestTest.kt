@@ -10,7 +10,7 @@ class HTTPRequestTest {
     fun loadEmpty200okPage() {
         val req = HTTPRequest("http://httpbin.org/status/200")
         runBlocking {
-            val text = req.loadText()
+            val text = req.getText()
             assertEquals("", text)
         }
     }
@@ -20,7 +20,7 @@ class HTTPRequestTest {
         val req = HTTPRequest("http://httpbin.org/status/404")
         assertFails {
             runBlocking {
-                req.loadText()
+                req.getText()
             }
         }
     }
@@ -29,18 +29,27 @@ class HTTPRequestTest {
     fun loadSamplePage() {
         val req = HTTPRequest("http://httpbin.org/robots.txt")
         runBlocking {
-            val text = req.loadText()
+            val text = req.getText()
             assertEquals("User-agent: *\nDisallow: /deny\n", text)
         }
     }
 
     @Test
     fun loadHeaders() {
-        val req = HTTPRequest("http://httpbin.org/headers", "GET", mapOf("MyLibraryHeader" to "networkinkt"))
+        val req = HTTPRequest("http://httpbin.org/headers", "GET", null, mapOf("MyLibraryHeader" to "networkinkt"))
         runBlocking {
-            val text = req.loadText()
+            val text = req.getText()
             assertTrue(text.contains("MyLibraryHeader", ignoreCase = true))
             assertTrue(text.contains("networkinkt", ignoreCase = true))
+        }
+    }
+
+    @Test
+    fun postWithBody() {
+        val req = HTTPRequest("http://httpbin.org/post", "POST", "a=b")
+        runBlocking {
+            val text = req.getText()
+            assertTrue(text.contains("\"form\": {\n    \"a\": \"b\"\n  }"))
         }
     }
 }

@@ -5,12 +5,15 @@ This is a simple HTTP client for Kotlin. It relies on coroutines on both JS & JV
 ```kotlin
 import com.egorzh.networkinkt.*
 
-val text = HTTP.get("http://httpbin.org/status/200").loadText() // suspending call
+val text = HTTP.get("http://httpbin.org/status/200").getText() // suspending call
 ```
 
-A request with HTTP headers:
+A request with HTTP headers and body:
 ```kotlin
-val resp = HTTP.get("http://httpbin.org/headers", headers = mapOf("MyLibraryHeader" to "networkinkt"))
+val text = HTTP.post("http://httpbin.org/headers",
+                    headers = mapOf("MyLibraryHeader" to "networkinkt"),
+                    body = "param=value")
+                    .getText()
 ```
 
 ## Getting started
