@@ -8,7 +8,7 @@ import kotlin.coroutines.experimental.suspendCoroutine
 /**
  * @author Egor Zhdan
  */
-actual class HTTPRequest actual constructor(url: String, method: String = "GET", body: String? = null, headers: Map<String, String> = emptyMap()) {
+actual class HTTPRequest actual constructor(url: String, method: String, body: String?, headers: Map<String, String>) {
     private val con = URL(url).openConnection() as HttpURLConnection
 
     init {

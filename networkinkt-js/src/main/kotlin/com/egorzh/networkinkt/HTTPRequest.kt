@@ -6,7 +6,7 @@ import kotlin.coroutines.experimental.suspendCoroutine
 /**
  * @author Egor Zhdan
  */
-actual class HTTPRequest actual constructor(private val url: String, private val method: String = "GET", private val body: String? = null, private val headers: Map<String, String> = emptyMap()) {
+actual class HTTPRequest actual constructor(private val url: String, private val method: String, private val body: String?, private val headers: Map<String, String>) {
     private val req = XMLHttpRequest()
 
     fun configure(block: XMLHttpRequest.() -> Unit) = req.run(block)

@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        kotlin_version = '1.2.21'
-        kotlinx_coroutines_version = '0.21'
-        kotlinx_serialization_version = '0.4'
+        kotlin_version = '1.2.41'
+        kotlinx_coroutines_version = '0.22.5'
+        kotlinx_serialization_version = '0.5.0'
     }
 
     repositories {
