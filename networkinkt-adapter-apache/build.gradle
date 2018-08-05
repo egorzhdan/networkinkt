@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'kotlin'
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
+    testCompile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
+    compile 'org.apache.httpcomponents:httpclient:4.5.6'
+
+    compile project(':networkinkt-jvm')
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+}
