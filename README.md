@@ -58,8 +58,8 @@ You can always check which version is up-to-date on the [releases page](https://
 ## Usage
 
 How to make a request:
-1. Obtain an instance of `HTTPRequest` from an `HTTPClient` (the default one is `DefaultHTTPClient` or simply `HTTP`)
-1. Send the request and receive an `HTTPResponse`, which encapsulates the response code and text
+1. Obtain an instance of [`HTTPRequest`](networkinkt-common/src/main/kotlin/com/egorzh/networkinkt/HTTPRequest.kt) from an [`HTTPClient`](networkinkt-common/src/main/kotlin/com/egorzh/networkinkt/HTTPClient.kt) (the default one is `DefaultHTTPClient` or simply `HTTP`)
+1. Send the request and receive an [`HTTPResponse`](networkinkt-common/src/main/kotlin/com/egorzh/networkinkt/HTTPResponse.kt), which encapsulates the response code and text
 1. Use `code` and `text` properties of a response object
 
 ```kotlin
@@ -78,5 +78,8 @@ val text = response.text
 
 ### Customization
 
-You can easily create your own implementations of `HTTPClient`, 
+You can easily create your own implementations of [`HTTPClient`](networkinkt-common/src/main/kotlin/com/egorzh/networkinkt/HTTPClient.kt), 
 for example, to provide caching or error handling functionality.
+
+[Apache adapter](networkinkt-adapter-apache/src/main/kotlin/com/egorzh/networkinkt/adapters/apache/apache.kt) 
+is an example of using custom `HTTPClient`.
