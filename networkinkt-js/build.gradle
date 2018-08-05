@@ -23,7 +23,7 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
 }
 
-compileTestKotlin2Js.configure {
+[compileKotlin2Js, compileTestKotlin2Js]*.configure {
     kotlinOptions {
         sourceMap = true
         sourceMapEmbedSources = "always"
