@@ -2,7 +2,7 @@ package com.egorzh.networkinkt.adapters.apache
 
 import com.egorzh.networkinkt.*
 import kotlin.test.*
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 
 /**
  * @author Egor Zhdan

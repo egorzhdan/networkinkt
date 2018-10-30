@@ -1,8 +1,6 @@
 package com.egorzh.networkinkt
 
-import kotlinx.coroutines.experimental.*
-import kotlin.coroutines.experimental.*
+import kotlinx.coroutines.*
+import kotlin.coroutines.*
 
-actual fun runBlocking(block: suspend () -> Unit): dynamic = promise {
-    block()
-}
+actual fun runBlocking(block: suspend () -> Unit): dynamic = TODO()//promise { block() }

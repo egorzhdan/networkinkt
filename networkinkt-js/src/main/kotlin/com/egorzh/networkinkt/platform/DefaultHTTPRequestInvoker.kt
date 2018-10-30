@@ -2,7 +2,8 @@ package com.egorzh.networkinkt.platform
 
 import com.egorzh.networkinkt.*
 import org.w3c.xhr.XMLHttpRequest
-import kotlin.coroutines.experimental.suspendCoroutine
+import kotlin.coroutines.suspendCoroutine
+import kotlin.coroutines.resume
 
 internal actual object DefaultHTTPRequestInvoker {
     actual suspend fun sendRequest(request: DefaultHTTPRequest): DefaultHTTPResponse = suspendCoroutine { continuation ->

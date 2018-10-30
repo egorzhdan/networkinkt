@@ -5,17 +5,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$kotlinx_serialization_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
     }
 }
 apply plugin: 'kotlin-platform-jvm'
 apply plugin: 'kotlinx-serialization'
-
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

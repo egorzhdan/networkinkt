@@ -3,7 +3,8 @@ package com.egorzh.networkinkt.platform
 import com.egorzh.networkinkt.*
 import java.io.IOException
 import java.net.*
-import kotlin.coroutines.experimental.suspendCoroutine
+import kotlin.coroutines.suspendCoroutine
+import kotlin.coroutines.resume
 
 internal actual object DefaultHTTPRequestInvoker {
     actual suspend fun sendRequest(request: DefaultHTTPRequest): DefaultHTTPResponse = suspendCoroutine { continuation ->
